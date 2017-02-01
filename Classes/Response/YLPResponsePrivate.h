@@ -12,6 +12,8 @@
 #import "YLPReview.h"
 #import "YLPSearch.h"
 #import "YLPUser.h"
+#import "YLPBusinessHours.h"
+#import "YLPHours.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,6 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YLPLocation ()
 - (instancetype)initWithDictionary:(NSDictionary *)locationDict coordinate:(nullable YLPCoordinate *)coordinate;
+@end
+
+@interface YLPBusinessHours ()
+- (instancetype) initWithDictionary:(NSDictionary *)businessHoursDict;
+@end
+
+@interface YLPHours ()
+- (instancetype) initWithDictionary:(NSDictionary *)hoursDict;
 @end
 
 @interface YLPReview ()

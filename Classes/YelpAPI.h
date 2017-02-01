@@ -24,3 +24,6 @@
 #import "YLPReview.h"
 #import "YLPSearch.h"
 #import "YLPUser.h"
+
+#import "YLPBusinessHours.h"
+#import "YLPHours.h"

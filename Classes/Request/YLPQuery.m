@@ -32,6 +32,10 @@
     return _categoryFilter ?: @[];
 }
 
+- (NSArray<NSString *> *)price {
+    return _price ?: @[];
+}
+
 - (NSString *)sortParameter {
     switch (self.sort) {
         case YLPSortTypeBestMatched:
@@ -78,7 +82,10 @@
     if (self.dealsFilter) {
         params[@"attributes"] = @"deals";
     }
-
+    if (self.price.count > 0) {
+        params[@"price"] = [self.price componentsJoinedByString:@","];
+    }
+    
     return params;
 }
 

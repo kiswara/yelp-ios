@@ -11,6 +11,7 @@
 #import "YLPCoordinate.h"
 #import "YLPLocation.h"
 #import "YLPResponsePrivate.h"
+#import "YLPBusinessHours.h"
 
 @implementation YLPBusiness
 
@@ -30,11 +31,31 @@
         NSString *phone = [businessDict ylp_objectMaybeNullForKey:@"phone"];
         _phone = phone.length > 0 ? phone : nil;
         
+        _photos = [self.class photosFromJSONArray:businessDict[@"photos"]];
+        _price = businessDict[@"price"];
+        _hours = [self.class businessHoursFromJSONArray:businessDict[@"hours"]];
+        
         _categories = [self.class categoriesFromJSONArray:businessDict[@"categories"]];
         YLPCoordinate *coordinate = [self.class coordinateFromJSONDictionary:businessDict[@"coordinates"]];
         _location = [[YLPLocation alloc] initWithDictionary:businessDict[@"location"] coordinate:coordinate];
     }
     return self;
+}
+
++ (NSArray *)businessHoursFromJSONArray:(NSArray *)businessHoursJSON {
+    NSMutableArray *mutableBusinessHours = [[NSMutableArray alloc] init];
+    for (NSDictionary *businessHours in businessHoursJSON) {
+        [mutableBusinessHours addObject:[[YLPBusinessHours alloc] initWithDictionary:businessHours]];
+    }
+    return mutableBusinessHours;
+}
+
++ (NSArray *)photosFromJSONArray:(NSArray *)photosJSON {
+    NSMutableArray *mutablePhotos = [[NSMutableArray alloc] init];
+    for (NSString *photo in photosJSON) {
+        [mutablePhotos addObject:[[NSURL alloc] initWithString:photo]];
+    }
+    return mutablePhotos;
 }
 
 + (NSArray *)categoriesFromJSONArray:(NSArray *)categoriesJSON {

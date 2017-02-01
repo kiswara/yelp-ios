@@ -10,6 +10,7 @@
 
 @class YLPLocation;
 @class YLPCategory;
+@class YLPBusinessHours;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,6 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, copy) NSString *identifier;
 
 @property (nonatomic, readonly, copy) NSArray<YLPCategory *> *categories;
+@property (nonatomic, readonly, copy) NSArray<YLPBusinessHours *> *hours;
+
+@property (nonatomic, readonly, copy) NSArray<NSURL *> *photos;
+@property (nonatomic, readonly, copy) NSString *price;
 
 @property (nonatomic, readonly) YLPLocation *location;
 
