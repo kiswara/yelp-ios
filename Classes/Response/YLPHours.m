@@ -14,23 +14,11 @@
     if (self = [super init]) {
         _day = [hourDict[@"day"] integerValue];
         _overnight = hourDict[@"is_overnight"];
-        _start = [self.class dateFromTimestamp:hourDict[@"start"]];
-        _end = [self.class dateFromTimestamp:hourDict[@"end"]];
+        _start = hourDict[@"start"];
+        _end = hourDict[@"end"];
     }
     
     return self;
-}
-
-+ (NSDate *)dateFromTimestamp:(NSString *)timestamp {
-    static NSDateFormatter *dateFormatter = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"HHmm";
-        dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
-    });
-    
-    return [dateFormatter dateFromString:timestamp];
 }
 
 @end

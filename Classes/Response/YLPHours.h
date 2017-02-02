@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, readonly) NSUInteger day;
 @property (nonatomic, getter=isOvernight, readonly) BOOL overnight;
-@property (nonatomic, copy, readonly) NSDate *start;
-@property (nonatomic, copy, readonly) NSDate *end;
+@property (nonatomic, copy, readonly) NSString *start;
+@property (nonatomic, copy, readonly) NSString *end;
 
 @end
 
