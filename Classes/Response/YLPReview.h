@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YLPReview : NSObject
 
+@property (nonatomic, readonly, copy) NSURL *URL;
+
 @property(nonatomic, readonly, copy) NSString *excerpt;
 
 @property(nonatomic, readonly, copy) NSDate *timeCreated;

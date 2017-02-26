@@ -14,6 +14,7 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)reviewDict {
     if (self = [super init]) {
+        _URL = [[NSURL alloc] initWithString:reviewDict[@"url"]];
         _rating = [reviewDict[@"rating"] doubleValue];
         _excerpt = reviewDict[@"text"];
         _timeCreated = [self.class dateFromTimestamp:reviewDict[@"time_created"]];
